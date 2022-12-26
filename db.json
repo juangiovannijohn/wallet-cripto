@@ -1,0 +1,198 @@
+{
+  "usuario": [
+    {
+      "id": 1,
+      "email": "leomessi@gmail.com",
+      "password": "leo",
+      "Nombre": "Lionel Andres",
+      "Apellido": "Messi",
+      "cbu": 2056789900
+    },
+    {
+      "id": 2,
+      "email": "mateo@gmail.com",
+      "password": "prueba",
+      "Nombre": "Mateo",
+      "Apellido": "Taricco",
+      "cbu": 6953189852
+    },
+    {
+      "email": "probando@gmail.com",
+      "password": "holamundo",
+      "Nombre": "esto es ",
+      "Apellido": "una prueba",
+      "cbu": 3348523303,
+      "id": 3
+    },
+    {
+      "email": "mateotari@gmail.com",
+      "password": "probando",
+      "Nombre": "Mateo",
+      "Apellido": "Taricco",
+      "cbu": 7526189641,
+      "id": 4
+    },
+    {
+      "email": "nico@otamendi.com",
+      "password": "1234",
+      "Nombre": "Nicolas ",
+      "Apellido": "Otamenti",
+      "cbu": 3938286094,
+      "id": 5
+    },
+    {
+      "email": "",
+      "password": "",
+      "Nombre": "",
+      "Apellido": "",
+      "cbu": 308130797,
+      "id": 6
+    },
+    {
+      "email": "juan@juan.com",
+      "password": "123456",
+      "Nombre": "Juan Manuel",
+      "Apellido": "Rodriguez",
+      "cbu": 2545709891,
+      "id": 7
+    },
+    {
+      "email": "nadiapilarm@kdkkd.com",
+      "password": "dskdkkdkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+      "Nombre": "Nadia pilar",
+      "Apellido": "Montenegro",
+      "cbu": 4042353875,
+      "id": 8
+    },
+    {
+      "email": "skkkkkkkkkkkkkkk",
+      "password": "5555",
+      "Nombre": "pilar",
+      "Apellido": "montenegro",
+      "cbu": 223282835,
+      "id": 9
+    },
+    {
+      "email": "",
+      "password": "12345678",
+      "Nombre": "Pilar",
+      "Apellido": "Montenegro",
+      "cbu": 5929281122,
+      "id": 10
+    }
+  ],
+  "transaccionFinal": [
+    {
+      "idUsuario": 1,
+      "codigoMovimiento": 1,
+      "cuenta": 2,
+      "fecha": "20/10/2022",
+      "debe": 0,
+      "haber": 30000,
+      "cotARSvsBTC": 2928558,
+      "id": 1
+    },
+    {
+      "idUsuario": 2,
+      "codigoMovimiento": 1,
+      "cuenta": 2,
+      "fecha": "20/10/2022",
+      "debe": 0,
+      "haber": 30000,
+      "cotARSvsBTC": 2928558,
+      "id": 2
+    },
+    {
+      "idUsuario": 3,
+      "codigoMovimiento": 1,
+      "cuenta": 2,
+      "fecha": "20/10/2022",
+      "debe": 0,
+      "haber": 30000,
+      "cotARSvsBTC": 2928558,
+      "id": 3
+    },
+    {
+      "idUsuario": 1,
+      "codigoMovimiento":3,
+      "cuenta": 2,
+      "fecha": "13/11/2022 - 20:09 hrs",
+      "debe": 20000,
+      "haber": 0,
+      "cotARSvsBTC": 2629137,
+      "id": 4
+    },
+    {
+      "idUsuario": 1,
+      "codigoMovimiento":4,
+      "cuenta": 1,
+      "fecha": "13/11/2022 - 20:09 hrs",
+      "debe": 0,
+      "haber": 0.007607058894230312,
+      "cotARSvsBTC": 2629137,
+      "id": 5
+    }
+  ],
+  "team": [
+    {
+      "id": 1,
+      "name": "Juan Rodriguez",
+      "perfil": "Web Developer NodeJS + Angular",
+      "imagen": "../../../assets/img/team/imagen1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Natalia Murat",
+      "perfil": "Desarrolladora web",
+      "imagen": "../../../assets/img/team/imagen2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Pilar Montenegro",
+      "perfil": "Desarrolladora web",
+      "imagen": "../../../assets/img/team/imagen3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Mateo Ferrero",
+      "perfil": "Backend Developer C# .NET",
+      "imagen": "../../../assets/img/team/imagen4.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Agustín López",
+      "perfil": "Desarrollador web .Net",
+      "imagen": "../../../assets/img/team/imagen5.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Fernanda Manzano",
+      "perfil": "UI/UX Designer - Tester QA - Front end developer",
+      "imagen": "../../../assets/img/team/imagen6.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Ana Julia Ferreyra",
+      "perfil": "PHP Developer",
+      "imagen": "../../../assets/img/team/imagen7.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Fernando Heredia",
+      "perfil": "Desarrollador Web",
+      "imagen": "../../../assets/img/team/imagen8.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Mateo Taricco",
+      "perfil": "Desarrollador Web",
+      "imagen": "../../../assets/img/team/imagen9.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Pablo Adrián Vera",
+      "perfil": "Desarrollador Web",
+      "imagen": "../../../assets/img/team/imagen10.jpg"
+    }
+  ]
+}

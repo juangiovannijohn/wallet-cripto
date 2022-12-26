@@ -1,0 +1,20 @@
+
+<section class="p-5 page-section bg-dark" id="team">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2 class="section-heading text-uppercase">Nuestro Equipo</h2>
+        </div>
+        <div class="row">
+            <div *ngFor="let item of team"  class="col-md-4 mb-5">
+
+                    <img class="rounded-circle mb-3" width="100%" [src]="item.imagen" />
+                    <h4 class="text-center">{{item.name}}</h4>
+                    <p class="text-center text-muted">{{item.perfil}}</p>
+
+            </div>
+            <div style="min-height: 20vh"></div>
+        </div>
+    </div>
+</section>
+
+

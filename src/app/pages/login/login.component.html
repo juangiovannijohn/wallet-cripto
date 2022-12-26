@@ -1,0 +1,52 @@
+<div class="container login">
+  <div class="row">
+    <div class="col-12">
+      <div class="w-100 d-block my-5">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-5">
+            <div class="card bg-light">
+
+                <div class="card-body">
+                  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+                      <h1 class="text-dark">Iniciar Sesion</h1>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-2">
+                      <input ((keyup))="habilitarBotonEntrar()" [(ngModel)]="enteredEmail" name="email" type="email"
+                        id="email" class="form-control" required />
+                      <label class="email-label text-dark" for="email">Direccion email</label>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-2">
+                      <input (keyup)="habilitarBotonEntrar()" [(ngModel)]="enteredPassword" name="password"
+                        type="password" id="password" class="form-control" required />
+                      <label class="password-label text-dark" for="password">Contraseña</label>
+                    </div>
+
+                    <!-- 2 column grid layout for inline styling -->
+                    <div class="row mb-2">
+                      <div class="col">
+                        <!-- Simple link -->
+                        <a routerLink="../recuperar-contraseña">Olvide mi contraseña</a>
+                      </div>
+                    </div>
+
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block"
+                      [disabled]="!entrarHabilitado">Entrar</button>
+                  </form>
+                  <p *ngIf="!validezCampo" class="mensajeError">
+                    Tu contraseña no es correcta. Vuelve a comprobarla.
+                  </p>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>

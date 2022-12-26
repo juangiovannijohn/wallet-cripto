@@ -1,0 +1,273 @@
+<!-- Modal retirar -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form [formGroup]="form">
+          <div class="row justify-content-around">
+            <div class="">
+              <div class="card-content p-2 bg-dark text-white">
+                <legend>Enviar Pesos Argentinos</legend>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-bank"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"
+                  />
+                </svg>
+                <h5><label>Tranferencia bancaria</label></h5>
+                <legend>Banco o billetera digital</legend>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    id="nombreInput"
+                    formControlName="nombre"
+                    class="form-control"
+                    placeholder="Beneficiario"
+                  />
+                  <div
+                    *ngIf="
+                      nombre?.invalid && (nombre?.dirty || nombre?.touched)
+                    "
+                    class="alert"
+                  >
+                    <div *ngIf="nombre?.errors?.['required']">
+                      Nombre de beneficiario requerido
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    id="cbuInput"
+                    formControlName="cbu"
+                    class="form-control"
+                    placeholder="CBU/CVU"
+                  />
+                  <div
+                    *ngIf="cbu?.invalid && (cbu?.dirty || cbu?.touched)"
+                    class="alert"
+                  >
+                    <!--
+                    <select type="text" id="disabledTextInput" formControlName="cbu" class="form-control"
+                      placeholder="CBU/CVU">
+                      <option value="{{cbuBeneficiario}}">beneficiario</option>
+                      </select>
+                      <div *ngIf="cbu?.invalid && (cbu?.dirty || nombre?.touched)" class="alert">
+-->
+                    <div *ngIf="cbu?.errors?.['required']">CBU requerido</div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="number"
+                    id="montoInput"
+                    formControlName="monto"
+                    class="form-control"
+                    placeholder="Monto a enviar"
+                  />
+                  <div
+                    *ngIf="monto?.invalid && (monto?.dirty || monto?.touched)"
+                    class="alert"
+                  >
+                    <div *ngIf="monto?.errors?.['required']">
+                      Monto requerido
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="chbx"
+                      (change)="checkForm($event)"
+                    />
+                    <label class="form-check-label" for="disabledFieldsetCheck">
+                      Can't check this
+                    </label>
+                  </div>
+                </div>
+                <p *ngIf="amountState">El monto ingresado no es válido</p>
+                <button
+                  type="button"
+                  id="btn"
+                  [disabled]="hola"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#retirar-detalle"
+                  (click)="Continuar()"
+                >
+                  Continuar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div
+    *ngIf="showAlertMonto"
+    class="alert alert-warning alert-dismissible fade show"
+    role="alert"
+  >
+    <p class="m-0 fs-4">No se puede realizar retiro con monto ingresado</p>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div
+    *ngIf="showAlertDestino"
+    class="alert alert-warning alert-dismissible fade show"
+    role="alert"
+  >
+    <p class="m-0 fs-4">La cuenta de destino no está registrada</p>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+</div>
+<!-- Modal retirar fín -->
+
+<!-- Modal retirar-detalle -->
+<div
+  class="modal fade"
+  id="retirar-detalle"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row justify-content-around">
+          <div class="">
+            <div class="card-content p-2 bg-dark text-white">
+              <legend>Confirmar envío de Pesos Argentinos</legend>
+              <h5><label>Banco</label></h5>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-bank"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"
+                />
+              </svg>
+              <legend>Banco o billetera digital</legend>
+              <div class="mb-3">
+                <label class="form-label">Monto a enviar</label><br />
+                <label class="form-label">{{ montoIngresado }}</label>
+              </div>
+              <div class="mb-3">
+                <label class="">Beneficiario</label><br />
+                <label class="form-label">{{ beneficiario }}</label>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">CBU/CVU</label><br />
+                <label class="form-label">{{ cbuBeneficiario }}</label>
+              </div>
+              <div class="mb-3">
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    id="disabledTextInput"
+                    class="form-control"
+                    placeholder="PIN de transacción"
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#retirar-final"
+                (click)="retirar()"
+              >
+                Confirmar
+              </button>
+              <!--<button type="button" class="btn btn-secondary mr-2" data-dismiss="modal" routerLink="/cuenta-personal" (click)="reset()">Close</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal retirar-detalle fín -->
+
+<!-- Modal retirar-final-->
+<div
+  class="modal fade"
+  id="retirar-final"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form>
+          <div class="row justify-content-around">
+            <div class="">
+              <div class="card-content p-2 bg-dark text-white">
+                <legend>Retiro de Pesos Argentinos Finalizado</legend>
+                <h5><label>Banco</label></h5>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-bank"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"
+                  />
+                </svg>
+                <legend>Banco o billetera digital</legend>
+                <div class="mb-3">
+                  <label class="form-label">Retiro Finalizado con Exito!</label
+                  ><br />
+                </div>
+                <div class="">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                    routerLink="/cuenta-personal"
+                    (click)="reset()"
+                  >
+                    Aceptar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal retrira-final fín -->

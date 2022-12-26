@@ -1,0 +1,47 @@
+<section class="p-5 page-section bg-dark">
+  <h2 class="text-center section-heading text-uppercase mb-4">Mercado</h2>
+  <div class="container text-center">
+      <div class="row">
+          <div class="col-12">
+            <div class="border-5">
+              <table class="table  table-bordered table-striped table-secondary table-hover ">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col" class="">Moneda</th>
+                    <th scope="col" class="">Valor en pesos</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr>
+                    <td scope="row"><img src="../../../assets/img/BTC.png" class="img-fluid" alt="Logo BTC"></td>
+                    <td class="">BTC</td>
+                    <td class="">$ {{ this.precios.bitcoin.ars }}</td>
+                  </tr>
+                  <tr >
+                    <th scope="row"><img src="../../../assets/img/ETH.png" class="img-fluid" alt="Logo ETH"></th>
+                    <td class="">ETH</td>
+                    <td class="">${{ this.precios.ethereum.ars }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><img src="../../../assets/img/USDT.png" class="img-fluid" alt="Logo ETH"></th>
+                    <td class="">USDT</td>
+                    <td class="">${{ this.precios.tether.ars }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><img src="../../../assets/img/BNB.png" class="img-fluid" alt="Logo ETH"></th>
+                    <td class="">BNB</td>
+                    <td class="">${{ this.precios.binancecoin.ars }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><img src="../../../assets/img/ADA.png" class="img-fluid" alt="Logo ETH"></th>
+                    <td class="">ADA</td>
+                    <td class="">${{ this.precios.cardano.ars }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+  </div>
+</section>

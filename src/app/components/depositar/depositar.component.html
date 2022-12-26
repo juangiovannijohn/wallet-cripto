@@ -1,0 +1,90 @@
+<div
+  class="modal fade"
+  id="depositarModal"
+  tabindex="-1"
+  aria-labelledby="depositarModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <form [formGroup]="form">
+          <div class="row justify-content-center">
+            <div class="card bg-light">
+              <div class="card-body ">
+                <p class="fs-1 text-dark text-start">Depositá en tu cuenta</p>
+                <div class="row">
+                  <div class="col-1">
+                  
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-bank"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"
+                  />
+                </svg>
+              </div>
+                <div class="col-11">
+                <p class="fs-5 text-start">{{nombreUsuario}}</p>
+              </div>
+              </div>
+                <legend>Banco o billetera digital</legend>
+                <div class="mb-3">
+                  <h6>CBU/CVU</h6>
+                  <input
+                    type="text"
+                    [(ngModel)]="cbuUsuario"
+                    placeholder="CBU"
+                    class="form-control"
+                    value="{{ cbuUsuario }}"
+                    #cbuInput
+                  />
+                  <br>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="copyInputMessage(cbuInput)"
+                    value="click to copy"
+                  >
+                    Copiar
+                </button>
+                </div>
+
+                <div class="mb-3">
+                  <br />
+                  <h6>Monto a enviar</h6>
+                  <input
+                    formControlName="monto"
+                    [(ngModel)]="montoIngresado"
+                    class="col form-control"
+                    type="number"
+                    placeholder="Inserte una cantidad"
+                  />
+                  <br>
+                  <div *ngIf="showAlertMonto" class="alert alert-danger fade show" role="alert">
+                    Monto ingresado invalido!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" routerLink="/cuenta-personal" data-bs-dismiss="modal" aria-label="Close" (click)="reset()"></button>
+                  </div>
+                </div>
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    [disabled]="showAlertMonto"
+                    routerLink="/cuenta-personal"
+                    (click)="generarDeposito(montoIngresado)"
+                    data-bs-dismiss="alert"
+                    >
+                  Continuar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

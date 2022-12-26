@@ -1,0 +1,32 @@
+<div class="container mt-3 mb-5">
+  <h1>Cuenta Personal</h1>
+  <section class="bg-secundario p-4 my-4 rounded">
+    <app-balance-total></app-balance-total>
+  
+    <div class="row">
+      <div class="col text-center">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#depositarModal" routerLink="/cuenta-personal/depositar">Depositar</button>
+        <app-depositar></app-depositar>
+      </div>
+      <div class="col text-center">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#intercambiarModal"
+          routerLink="/cuenta-personal/intercambiar">
+          Intercambiar
+        </button>
+        <app-intercambiar></app-intercambiar>
+      </div>
+      <div class="col text-center">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" routerLink="/cuenta-personal/retirar">Retirar</button>
+      </div>
+      <app-retirar></app-retirar>
+    </div>
+  </section>
+  <app-retirar></app-retirar>
+  <app-portafolio-cripto></app-portafolio-cripto>
+  <app-historial-transacciones></app-historial-transacciones>
+</div>
+<div style="min-height: 10vh;"></div>
