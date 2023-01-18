@@ -106,7 +106,55 @@ Flight::route('POST /usuarios', function () {
     
 });//agregar nuevo usuario
 
-//actualizar un usuario
+Flight::route('POST /usuarios/update', function () {
+    
+    $id= (Flight::request()->data->id);
+    $nombre= (Flight::request()->data->nombre); 
+    $apellido= (Flight::request()->data->apellido);
+    $password_input= (Flight::request()->data->password);
+    $sql_verify = "SELECT usuario_pass from usuarios where id =".$id;
+    $request_verify = Flight::db()->prepare($sql_verify);
+    $request_verify->execute();
+    $password_hash = $request_verify->fetch();
+    $verificacion_pass = password_verify($password_input, $password_hash["usuario_pass"]);
+    if (!$verificacion_pass) {
+        Flight::halt(400, json_encode(["msj"=>"ERROR, El password ingresado no es correcto, no puede modificar el usuario"]));
+ 
+    } else {
+        $sql = "UPDATE `usuarios` SET `usuario_nombre`='".$nombre."', `usuario_apellido`='".$apellido."' where `id`=".$id;
+        $sentencia = Flight::db()->prepare($sql);
+        $sentencia->execute();
+        $id_response = $sentencia->fetch();
+
+
+        var_dump($id_response); // ????
+    }
+    
+
+
+/*
+    $pas_str = strval($password); //para que no haya injeccion de codigo, se pasa todo a string
+    $user_pass =  password_hash($pas_str, PASSWORD_BCRYPT);// se encrypta
+
+
+
+    $sql_return= "SELECT `id`, `usuario_nombre`, `usuario_apellido`, `usuario_email`  FROM `usuarios` WHERE `id` = ".$id.";";
+    $sentencia_return= Flight::db()->prepare($sql_return);
+    $sentencia_return->execute();
+    $datos=$sentencia_return->fetch();
+
+    $response = [
+        "msj"=>"Usuario creado exitosamente",
+        "ID"=>$datos['id'], 
+        "Nombre"=>$datos['usuario_nombre'],
+        "Apellido"=>$datos['usuario_apellido'],
+        "Correo"=>$datos['usuario_email']
+    ];
+    
+  */  
+});//actualizar un usuario
+
+//quiero que al crearse un usuario el mail no sea igual a otro
 
 //borrar un usuario
 
